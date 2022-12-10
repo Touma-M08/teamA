@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-        <script src="{{asset('js/createApi.js')}}"　defer></script>
-        <script src="https://maps.googleapis.com/maps/api/js?lang=ja&key={{ config('app.api_key') }}&libraries=places&callback=initMap" async defer></script>
-    </head>
-    <body>
+        <x-app-layout>
             <h2 class="section-ttl">新規場所登録</h2>
             
             <div class="search">
@@ -17,11 +7,12 @@
                     <p>登録したい場所を入力してください</p>
                     <div class="flex">
                         <input class="input" type="text" id="keyword">
-                        <button class="search-btn" id="search">検索実行</button>
+                        
+                        <button id="search" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</button>
                     </div>
                     <p class="errors">{{ $errors->first('place.name') }}</p>
                     
-                    <div id="map"></div>
+                    <div id="map" class="w-5, h-96"></div>
                 </div>
                 
                 <div class="right-side">
@@ -69,6 +60,7 @@
                     </form>
                 </div>
             </div>
-
-    </body>
-</html>
+            <script src="{{asset('js/createApi.js')}}"　defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?lang=ja&key={{ config('app.api_key') }}&libraries=places&callback=initMap" async defer></script>
+        </x-app-layout>
+   
