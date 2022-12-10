@@ -3,7 +3,7 @@ var service;
 var infowindow;
 
 function initMap() {
-  let errors = document.getElementsByClassName("errors")[1].innerHTML;
+  let errors = document.getElementsByClassName("errors")[0].innerHTML;
   
   if (errors == "") {
     var gunmaUniv = new google.maps.LatLng(36.4307571, 139.0450519);
@@ -41,7 +41,7 @@ function initMap() {
     
     const errors = document.getElementsByClassName("errors");
     errors[0].innerHTML = "";
-    errors[1].innerHTML = "";
+    
   
 
     var place = document.getElementById('keyword').value;
@@ -56,7 +56,7 @@ function initMap() {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         var placeDetail = {
           placeId: results[0].place_id,
-          fields: ['name', 'adr_address', 'geometry', 'formatted_phone_number', 'opening_hours']
+          fields: ['name', 'adr_address', 'geometry', 'formatted_phone_number']
         };
         service.getDetails(placeDetail, callback);
 
@@ -76,37 +76,22 @@ function initMap() {
           document.getElementById('name').value=name;
           document.getElementById('show-name').innerHTML=name;
           
+          var address = place.adr_address;
+          document.getElementById('address').innerHTML=address;
+          
+          var region = document.getElementsByClassName('region');
+          
+          var streetAddress = document.getElementsByClassName('street-address');
+          document.getElementById('street-address').value=region[0].innerHTML + streetAddress[0].innerHTML;
+          
+          document.getElementById('show-address').innerHTML=region[0].innerHTML + streetAddress[0].innerHTML;
+          
           var phoneNumber = place.formatted_phone_number;
           document.getElementById('phone-number').value=phoneNumber;
           if (phoneNumber == undefined) {
             document.getElementById('show-phone-number').innerHTML=" ";
           }else {
             document.getElementById('show-phone-number').innerHTML=phoneNumber;
-          }
-          
-          var address = place.adr_address;
-          document.getElementById('address').innerHTML=address;
-          
-          var region = document.getElementsByClassName('region');
-          document.getElementById('region').value=region[0].innerHTML;
-          
-          var streetAddress = document.getElementsByClassName('street-address');
-          document.getElementById('street-address').value=streetAddress[0].innerHTML;
-          
-          document.getElementById('show-address').innerHTML=region[0].innerHTML + streetAddress[0].innerHTML;
-          
-          if (!(place.opening_hours == undefined)) {
-            var hours = place.opening_hours.weekday_text;
-            for (var i = 0; i <= 6; i++) {
-              document.getElementById('hours-' + i).value=hours[i];
-            }
-            for (var i = 0; i <= 6; i++) {
-              document.getElementById('show-hours-' + i).innerHTML=hours[i];
-            }
-          } else {
-            for (var i = 0; i <= 6; i++) {
-              document.getElementById('hours-' + i).value="";
-            }
           }
           
           document.getElementById('lat').value=place.geometry.location.lat();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Place;
+use App\Models\Review;
 use Auth;
 
 
@@ -29,18 +30,23 @@ class PlaceController extends Controller
     }
     
     //お店情報登録
-    public function create(Category $category)
+    public function create()
     {
-        return view("")->with(["categories" => $category->get()]);
+        return view("create");
     }
     
     
-    public function store(Request $request, Place $place)
+    public function store(Request $request, Place $place, Review $review)
     {
-        $input = $request[""];
+        $input = $request["place"];
         $place->fill($input)->save();
         
-        return redirect(route('shopDetail'));
+        $review->review = $request->review;
+        $review->place_id = $place->id;
+        $review->user_id = Auth::user()->id;
+        $review->save();
+        
+        return redirect(route('shopDetail', $place->id));
     }
     
     //お店詳細ページ
