@@ -15,7 +15,7 @@
         @endforeach
     </body>
     
-    <form mehotd = "POST" action="/bbs/{{$place_id}}">
+    <form method = "POST" action="/bbs/{{$place_id}}">
         @csrf
         <input type = "text" name = "boardComment" placeholder = "コメントを入力"/>
         <input type = "submit" value = "投稿"/>
