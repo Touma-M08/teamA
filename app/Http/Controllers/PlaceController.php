@@ -15,16 +15,15 @@ class PlaceController extends Controller
     {
         $places = $place;
         $query = $place->query();
-        if () {
-            $query->where('name', 'LIKE', "%{}%");
+        if ($request->shopName || $request->address) {
+            if ($request->shopName) {
+                $query->where('name', 'LIKE', "%{$request->shopName}%");
+            }
+            if ($request->address) {
+                $query->where('address', 'LIKE', "%{$request->address}%");
+            }
+            $places = $query;
         }
-        if () {
-            $query->where('address', 'LIKE', "%{}%");
-        }
-        if () {
-            $query->where('category', 'LIKE', "%{}%");
-        }
-        $places = $query;
         
         return view("top")->with(["places" => $places->get()]);
     }
