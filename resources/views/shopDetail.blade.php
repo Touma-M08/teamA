@@ -11,7 +11,8 @@
 
     </head>
     <body class="antialiased">
-        <h2>店名:{{$place->name}}</h2>
+        <h2 class="text-red-400">店名:{{$place->name}}</h2>
         <h3>住所:{{$place->address}}</h3>
+        <a href = '/bbs/{{$place->id}}'>掲示板へ<</a>
     </body>
 </html>

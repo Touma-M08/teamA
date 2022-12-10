@@ -11,11 +11,14 @@ class CommentController extends Controller
 {
     public function index(Place $place, Comment $comment)
     {
-        return view("")->with(["comments" -> $comment->where("place_id", $place->id)->get()]);
+        $comment = $comment->where("place_id", $place->id)->get();
+        // $comment = $comment -> get();
+        return view("showComment")->with(["comments" => $comment]);
     }
     
     public function store(Request $request, Comment $comment, Place $place)
     {
+
         $comment->user_id = Auth::user()->id;
         $comment->place_id = $place->id;
         //$comment->comment = $request->;
