@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -13,4 +14,12 @@
             {{$comment->comment}}
         @endforeach
     </body>
+    
+    <form mehotd = "POST" action="/bbs/{{$place_id}}">
+        @csrf
+        <input type = "text" name = "boardComment" placeholder = "コメントを入力"/>
+        <input type = "submit" value = "投稿"/>
+    </form>
+    
 </html>
+</x-app-layout>

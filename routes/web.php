@@ -24,6 +24,7 @@ Route::get('/places/{place}/edit', [PlaceController::class, "edit"])->name("shop
 Route::put('/places/{place}', [PlaceController::class, "update"])->name("shopUpdate"); //お店情報上書き保存
 
 Route::get('/bbs/{place}',[CommentController::class, "index"])->name("shopComment"); //掲示板
+Route::post('/bbs/{place}',[CommentController::class,"store"])->name("shopCommentStore");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -13,17 +13,17 @@ class CommentController extends Controller
     {
         $comment = $comment->where("place_id", $place->id)->get();
         // $comment = $comment -> get();
-        return view("showComment")->with(["comments" => $comment]);
+        return view("showComment")->with(["comments" => $comment,"place_id" => $place->id]);
     }
     
     public function store(Request $request, Comment $comment, Place $place)
     {
-
+        dd($request->boardComment);
         $comment->user_id = Auth::user()->id;
         $comment->place_id = $place->id;
-        //$comment->comment = $request->;
+        $comment->comment = $request->boardComment;
         $comment->save();
         
-        return redirect("");
+        return redirect("/bbs/".$place->id);
     }
 }
