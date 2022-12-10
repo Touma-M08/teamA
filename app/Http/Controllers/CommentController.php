@@ -18,7 +18,6 @@ class CommentController extends Controller
     
     public function store(Request $request, Comment $comment, Place $place)
     {
-        dd($request->boardComment);
         $comment->user_id = Auth::user()->id;
         $comment->place_id = $place->id;
         $comment->comment = $request->boardComment;
