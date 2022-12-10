@@ -16,6 +16,13 @@ class PlaceSeeder extends Seeder
      */
     public function run()
     {
+        
+        DB::table('users')->insert([
+            'name' => 'Y',
+            'email' => 'a',
+            'password'=>'Y',
+            
+            ]);
         DB::table('places')->insert([
                 'name' => 'a',
                 'address' => '命名はデータを基準に考える',
@@ -48,5 +55,19 @@ class PlaceSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
+         DB::table('reviews')->insert([
+                "review" => "aaaaaa",
+                "user_id" => 1,
+                "place_id" => 1,
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+        ]);
+        DB::table('reviews')->insert([
+                "review" => "bbbbbb",
+                "user_id" => 1,
+                "place_id" => 2,
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+             ]);
     }
 }
