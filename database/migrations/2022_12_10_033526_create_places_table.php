@@ -21,7 +21,6 @@ return new class extends Migration
             $table->double('lat');
             $table->double('lng');
             $table->text("detail");
-            //$table->foreignId("category_id")->constrained();
             $table->timestamps();
         });
     }

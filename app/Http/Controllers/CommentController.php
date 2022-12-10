@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Place;
+use Auth;
 
 class CommentController extends Controller
 {
