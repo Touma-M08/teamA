@@ -68,6 +68,19 @@ class PlaceSeeder extends Seeder
                 "place_id" => 2,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
-             ]);
+        ]);
+        
+        DB::table('comments')->insert([
+            "comment" => "aa",
+            "user_id" => 1,
+            "place_id" => 1
+        ]);
+        
+        DB::table('comments')->insert([
+            "comment" => "bb",
+            "user_id" => 1,
+            "place_id" => 2
+        ]);
+        
     }
 }
