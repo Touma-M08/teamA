@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Place extends Model
+class Review extends Model
 {
     use HasFactory;
     
-    public function category()
+    public function user()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(User::class);
     }
     
-    public function reviews()
+    public function place()
     {
-        return $this->hasMany(Review::class);
+        return $this->belongsTo(Place::class);
     }
 }

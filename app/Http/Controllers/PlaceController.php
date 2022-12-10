@@ -12,7 +12,7 @@ class PlaceController extends Controller
     //トップページ
     public function index(Request $request, Place $place)
     {
-        return view("")->with(["places" => $place->get()]);
+        return view("top")->with(["places" => $place->get()]);
     }
     
     //お店情報登録
@@ -33,7 +33,7 @@ class PlaceController extends Controller
     //お店詳細ページ
     public function show(Place $place)
     {
-        return view("")->with(["place" => $place]);
+        return view("showDetail")->with(["place" => $place]);
     }
     
     

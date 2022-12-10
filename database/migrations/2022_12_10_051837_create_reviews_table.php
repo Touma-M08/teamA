@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('places', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("address");
-            $table->string("tel");
-            $table->double('lat');
-            $table->double('lng');
-            $table->text("detail");
-            $table->foreignId("category_id")->constrained();
+            $table->text("review");
+            $table->foreignId("user_id")->constrained();
+            $table->foreignId("place_id")->constrained();
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('places');
+        Schema::dropIfExists('reviews');
     }
 };
