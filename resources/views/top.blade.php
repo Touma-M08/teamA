@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -11,10 +12,10 @@
     <body>
         <div class= "font-30 font-normal">
             <div> 
-                <h2 class="mt-4 ">絞り込み</h2>
-                <form method="GET" action ="{{ url('/top') }}" >
+                <h2 class="mt-5 ">絞り込み</h2>
+                <form method="GET" action ="{{ url('/') }}" >
                     @csrf
-                    <input type = "search" placeholder="店名" name="shopName" class="ml-10">
+                    <input type = "search" placeholder="店名" name="shopName">
                     <input type = "search" placeholder="住所" name="adress">
                     <select name = "categories">
                         <option value = "カフェ">カフェ</option>
@@ -27,12 +28,12 @@
             <div>
                 <h2>{{$place->name}}</h2>
                 <p>{{$place->address}}</p>
-                <a href="/showDetail/{{$place->id}}" 
-                className = "ml-5">お店詳細</a>
+                <a href="/places/{{$place->id}}" 
+                class = "ml-5">お店詳細</a>
             </div>
             @endforeach
         </div>
         
-        
     </body>
 </html>
+</x-app-layout>
