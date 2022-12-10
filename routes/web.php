@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PlaceController::class, "index"])->name("top"); //トップページ
+Route::get('/places/{place}', [PlaceController::class, "show"])->name("shopDetail"); //お店詳細
+Route::get('/places/create', [PlaceController::class, "create"])->name("shopCreate"); //お店登録
+Route::post('/places', [PlaceController::class, "store"])->name("shopStore"); //お店保存処理
+Route::get('/places/{place}/edit', [PlaceController::class, "edit"])->name("shopEdit"); //お店情報編集
+Route::put('/places/{place}', [PlaceController::class, "update"])->name("shopUpdate"); //お店情報上書き保存
 
-Route::get('/top',function (){
-   return view('top') ;
-});
-Route::get('/shopDetail',function (){
-   return view('shopDetail') ;
-});
-Route::get('/shopComment',function (){
-   return view('shopComment') ;
-});
+Route::get('/bbs/{place}',[CommentController::class, "index"])->name("shopComment"); //掲示板
 
 Route::get('/dashboard', function () {
     return view('dashboard');
