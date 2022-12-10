@@ -19,6 +19,7 @@
                         <input class="input" type="text" id="keyword">
                         <button class="search-btn" id="search">検索実行</button>
                     </div>
+                    <p class="errors">{{ $errors->first('place.name') }}</p>
                     
                     <div id="map"></div>
                 </div>
@@ -32,24 +33,12 @@
                             <div id="show-name">{{ old('place.name') }}</div>
                         </div>
                         
-                        <div class="place-contents">
-                            <p>カテゴリー:</p>
-                            <select class="input" id="category" name="place[category_id]">
-                                <option value="">カテゴリーを選択してください</option>
-                                @foreach ($foodCategories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                                @foreach ($leisureCategories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select><br>
-                            <p class="errors">{{ $errors->first('place.category_id') }}</p>
-                        </div>
+                        
                         
                         <div class="place-contents">
                             <p>住所:</p>
                             <div class="address">
-                                <div id="show-address">{{ old('region') }}{{ old('place.address') }}</div>
+                                <div id="show-address">{{ old('place.address') }}</div>
                             </div>
                         </div>
                         
@@ -58,24 +47,20 @@
                             <div id="show-phone-number">{{ old('tel') }}</div>
                         </div>
                         
-                        <div class="place-contents __open">
-                            <p>営業時間:</p>
-                            <div id="show-hours-0">{{ old('place.time_mon') }}</div>
-                            <div id="show-hours-1">{{ old('place.time_tue') }}</div>
-                            <div id="show-hours-2">{{ old('place.time_wed') }}</div>
-                            <div id="show-hours-3">{{ old('place.time_thu') }}</div>
-                            <div id="show-hours-4">{{ old('place.time_fri') }}</div>
-                            <div id="show-hours-5">{{ old('place.time_sat') }}</div>
-                            <div id="show-hours-6">{{ old('place.time_sun') }}</div>
+                        <div>
+                            <p>レビュー</p>
+                            <textarea name=place[detail]></textarea>
+                            <p>レビュー</p>
+                            <textarea name=review></textarea>
                         </div>
                     
                     {{-- 送信用 --}}
                         <input type="hidden" name="place[name]" id="name" value="{{ old('place.name') }}" >
                         <div id="address" hidden></div>
-                        <input type="hidden" name="region" id="region" value="{{ old('region') }}">
+                
                         <input type="hidden" name="place[address]" id="street-address" value="{{ old('place.address') }}">
                         
-                        <input type="hidden" name="tel" id="phone-number" value="{{ old('tel') }}">
+                        <input type="hidden" name="place[tel]" id="phone-number" value="{{ old('tel') }}">
               
                         <input type="hidden" name="place[lat]" id="lat" value="{{ old('place.lat') }}">
                         <input type="hidden" name="place[lng]" id="lng" value="{{ old('place.lng') }}">

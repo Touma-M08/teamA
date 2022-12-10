@@ -18,11 +18,10 @@ class CommentController extends Controller
     
     public function store(Request $request, Comment $comment, Place $place)
     {
-        $input->$request->all();
-        $comment -> fill($input);
-        // $comment->user_id = Auth::user()->id;
-        // $comment->place_id = $place->id;
-        // $comment->comment = $request->;
+
+        $comment->user_id = Auth::user()->id;
+        $comment->place_id = $place->id;
+        //$comment->comment = $request->;
         $comment->save();
         
         return redirect("");

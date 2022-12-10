@@ -9,6 +9,8 @@ class Place extends Model
 {
     use HasFactory;
     
+    protected $fillable = ['name', 'address', 'tel', 'lat', 'lng', 'detail'];
+    
     public function reviews()
     {
         return $this->hasMany(Review::class);
