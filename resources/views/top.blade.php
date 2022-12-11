@@ -1,3 +1,5 @@
+  <script src="../path/to/flowbite/dist/flowbite.js"></script>
+  <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
 <x-app-layout>
     <div class="bg-white pb-6 sm:pb-8 lg:pb-12">
       <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
