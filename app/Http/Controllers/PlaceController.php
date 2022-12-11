@@ -35,23 +35,30 @@ class PlaceController extends Controller
     }
     
     //お店情報登録
-    public function create()
+    public function create(Category $category)
     {
-        return view("create");
+        return view("create")->with(["categories" => $category->get()]);
     }
     
     
     public function store(Request $request, Place $place, Review $review)
     {
         $input = $request["place"];
-        $place->fill($input)->save();
+        $data = $place->where("name", $input["name"])->first();
+        if (!$data) {
+            $place->fill($input)->save();
+            $review->place_id = $place->id;
+        }else {
+            $review->place_id = $data->id;
+        }
         
         $review->review = $request->review;
-        $review->place_id = $place->id;
         $review->user_id = Auth::user()->id;
         $review->save();
         
-        return redirect(route('shopDetail', $place->id));
+        $data = $place->where("name", $input["name"])->first();
+        
+        return redirect(route('shopDetail', $data->id));
     }
     
     //お店詳細ページ
