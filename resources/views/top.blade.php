@@ -50,7 +50,7 @@
           <!-- text start -->
           <div class="sm:max-w-xl flex flex-col items-center relative p-4">
             <p class="text-indigo-200 text-lg sm:text-xl text-center mb-4 md:mb-8">新しいバイトを見つけよう</p>
-            <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8 md:mb-12">個人経営のお店でバイトをしませんか？</h1>
+            <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8 md:mb-12"><p>個人経営のお店で</p><p>バイトをしませんか？</p></h1>
 
             <form method="GET" action ="{{ url('/search') }}" >
                 @csrf
