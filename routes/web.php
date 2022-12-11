@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::put('/places/{place}', [PlaceController::class, "update"])->name("shopUpd
 
 Route::get('/bbs/{place}',[CommentController::class, "index"])->name("shopComment"); //掲示板
 Route::post('/bbs/{place}',[CommentController::class,"store"])->name("shopCommentStore");
+
+
+Route::post('/places/{place}',[FavoriteController::class, "store"])->name("favoriteStore"); //お気に入り登録
+Route::get('/favorites',[FavoriteController::class, "index"])->name("favorites"); //お気に入り一覧
 
 Route::get('/dashboard', function () {
     return view('dashboard');
