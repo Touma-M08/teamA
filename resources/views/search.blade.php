@@ -88,7 +88,7 @@
       </div>
       @endforeach
       <!-- article - end -->
-  
+      {{$places->appends(request()->query())->links()}}
       </div>
     </div>
   </div>
