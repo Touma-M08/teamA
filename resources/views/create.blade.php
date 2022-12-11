@@ -58,7 +58,7 @@
           </div>
           <div>
             <h1 class="inline-block text-gray-800 text-sm sm:text-base mb-2">登録内容の確認</h2>
-            <form action="/places" method="POST">
+            <form action="/places" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="place" class="inline-block text-gray-800 text-sm sm:text-base mb-2">お店名</label>
@@ -91,6 +91,9 @@
                     <label for="review" class="inline-block text-gray-800 text-sm sm:text-base mb-2">レビュー*</label>
                     <textarea placeholder="入力してください" name="review" id="keyword" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" ></textarea>
                     <p class="errors text-red-500">{{ $errors->first('review') }}</p>
+                </div>
+                <div>
+                    <input type="file" name="image[]" multiple>
                 </div>
             {{-- 送信用 --}}
                 <input type="hidden" name="place[name]" id="name" value="{{ old('place.name') }}" >
