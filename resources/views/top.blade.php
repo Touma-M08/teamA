@@ -57,10 +57,14 @@
                 <div class="w-full flex flex-col sm:flex-row sm:justify-center gap-2.5">
                   <input type = "search" placeholder="店名" name="shopName" class="flex-col inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"/>
                   <input type = "search" placeholder="エリア" name="adress" class="flex-col inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"/>
-                  
+                  <select name="cat" class="flex-col inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
+                    <option value="">カテゴリー選択</option>
+                    @foreach($categories as $category)
+                      <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                  </select>
                 </div>
-                
-                <button type = "submit" class="ml-44 mt-3  flex-col inline-block bg-black hover:bg-gray-800 focus-visible:ring ring-indigo-300 text-white active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">絞り込み検索</button>
+                <button type = "submit" class="ml-72 mt-3 flex-col inline-block bg-black hover:bg-gray-800 focus-visible:ring ring-indigo-300 text-white active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">絞り込み検索</button>
             </from>
           </div>
           <!-- text end -->

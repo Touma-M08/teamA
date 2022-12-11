@@ -26,7 +26,8 @@ class CategorySeeder extends Seeder
         "しゃぶしゃぶ・すき焼き",
         "居酒屋",
         "カフェ",
-        "スイーツ"
+        "スイーツ",
+        "その他"
     ];
     /**
      * Run the database seeds.
