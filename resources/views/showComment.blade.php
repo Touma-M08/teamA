@@ -63,6 +63,7 @@
         </div>
         
        <div class="fixed right-0 bg-white py-6 sm:py-8 lg:py-12 w-1/2 h-full border-l-2 border-black">
+        
         <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
