@@ -30,6 +30,7 @@ class PlaceSeeder extends Seeder
                 'lat' => '00',
                 'lng' => '00',
                 'detail' => '時給1000円',
+                'category_id' => 1,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
@@ -41,6 +42,7 @@ class PlaceSeeder extends Seeder
                 'lat' => '00',
                 'lng' => '00',
                 'detail' => '時給1000円',
+                'category_id' => 1,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
@@ -52,6 +54,7 @@ class PlaceSeeder extends Seeder
                 'lat' => '00',
                 'lng' => '00',
                 'detail' => '時給1000円',
+                'category_id' => 1,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);

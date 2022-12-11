@@ -37,11 +37,17 @@
                     <div id="show-phone-number">{{ old('tel') }}</div>
                 </div>
                 
+                <select name="place[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+                
                 <div>
                     <p>レビュー</p>
-                    <textarea name=place[detail]></textarea>
+                    <textarea name="place[detail]"></textarea>
                     <p>レビュー</p>
-                    <textarea name=review></textarea>
+                    <textarea name="review"></textarea>
                 </div>
             
             {{-- 送信用 --}}
