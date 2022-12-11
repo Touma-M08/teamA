@@ -57,7 +57,7 @@
         </section>
         <div>
             @foreach($place->reviews as $review)
-            {{ $review -> reviews }} 
+            {{ $review->review }} 
             @endforeach
             
         </div>
