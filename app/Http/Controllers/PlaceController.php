@@ -19,21 +19,27 @@ class PlaceController extends Controller
         return view("top")->with(["user" => Auth::user()]);
     }
     
-    public function search(Request $request, Place $place)
+    public function search(Request $request, Place $place, Category $category)
     {
         $places = $place;
         $query = $place->query();
-        if ($request->shopName || $request->address) {
+        if ($request->shopName || $request->address || $request->cat) {
             if ($request->shopName) {
                 $query->where('name', 'LIKE', "%{$request->shopName}%");
             }
             if ($request->address) {
                 $query->where('address', 'LIKE', "%{$request->address}%");
             }
+            if ($request->cat) {
+                $query->where('category_id', $request->cat);
+            }
             $places = $query;
         }
         
-        return view("search")->with(["places" => $places->get()]);
+        return view("search")->with([
+            "places" => $places->get(),
+            "categories" => $category->get()
+        ]);
     }
     
     //お店情報登録
