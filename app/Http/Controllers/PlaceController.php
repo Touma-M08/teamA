@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
 use Auth;
+use App\Http\Requests\PlaceRequest;
 
 
 class PlaceController extends Controller
@@ -41,7 +42,7 @@ class PlaceController extends Controller
     }
     
     
-    public function store(Request $request, Place $place, Review $review)
+    public function store(PlaceRequest $request, Place $place, Review $review)
     {
         $input = $request["place"];
         $data = $place->where("name", $input["name"])->first();

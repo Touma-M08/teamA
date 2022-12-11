@@ -14,7 +14,7 @@
                 <label for="input" class="inline-block text-gray-800 text-sm sm:text-base mb-2">場所を検索する</label>
                 <input name="input" type="text" id="keyword" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                 <button id="search" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">検索開始</button>
-                <p class="errors">{{ $errors->first('place.name') }}</p>
+                <p class="errors text-red-500">{{ $errors->first('place.name') }}</p>
               </div>
               <div>
                 <div id="map" class="w-5, h-96"></div>
@@ -39,18 +39,22 @@
                 <div>
                     <div class="inline-block text-gray-800 text-sm sm:text-base mb-2">お店のカテゴリを選択してください</div>
                     <select name="place[category_id]">
+                        <option value="">カテゴリー選択</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
+                    <p class="errors text-red-500">{{ $errors->first('place.category_id') }}</p>
                 </div>
                 <div>
                     <label for="place[detail]" class="inline-block text-gray-800 text-sm sm:text-base mb-2">求人の詳細*</label>
                     <textarea placeholder="入力してください" name="place[detail]" id="keyword" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" ></textarea>
+                    <p class="errors text-red-500">{{ $errors->first('place.detail') }}</p>
                 </div>
                 <div>
                     <label for="review" class="inline-block text-gray-800 text-sm sm:text-base mb-2">レビュー*</label>
                     <textarea placeholder="入力してください" name="review" id="keyword" class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" ></textarea>
+                    <p class="errors text-red-500">{{ $errors->first('review') }}</p>
                 </div>
             {{-- 送信用 --}}
                 <input type="hidden" name="place[name]" id="name" value="{{ old('place.name') }}" >
