@@ -64,6 +64,7 @@ class PlaceController extends Controller
     //お店詳細ページ
     public function show(Place $place)
     {
+        //dd($place->lat);
         return view("shopDetail")->with(["place" => $place]);
     }
     

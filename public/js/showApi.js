@@ -4,7 +4,7 @@ var infowindow;
 
 
 function initMap() {
-    
+    console.log(lat);
     var place = new google.maps.LatLng(lat, lng);
 
     infowindow = new google.maps.InfoWindow();
@@ -36,12 +36,8 @@ function initMap() {
             service.getDetails(placeDetail, callback);
             
             function callback(place, status) {
-                if (place.photos == undefined) {
-                    document.getElementById('photo').src="/img/noimage.jpg";
-                } else {
-                    var photo = place.photos[0].getUrl({maxWidth: 600, maxHeight: 600});
-                    document.getElementById('photo').src=photo;
-                }
+                var photo = place.photos[0].getUrl({maxWidth: 600, maxHeight: 600});
+                document.getElementById('photo').src=photo;
             }
         }
     });
