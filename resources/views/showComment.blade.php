@@ -50,14 +50,14 @@
                       <span class="block text-sm font-bold">{{$comment->user->name}} コメントID:{{$comment->id}}</span>
                       <span class="block text-gray-500 text-sm">{{$comment->created_at}}</span>
                     </div>
-            
                     <p class="text-gray-600">{{$comment->comment}}</p>
                   </div>
                   <!-- review - end -->
                   @endforeach                
-                @else
+                                @else
                 <h2>まだコメントはありません</h2>
-                @endif
+                                @endif
+                {{$comments->links()}}
             </div>
           </div>
         </div>

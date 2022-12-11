@@ -12,9 +12,11 @@ class CommentController extends Controller
 {
     public function index(Place $place, Comment $comment)
     {
-        $comment = $comment->where("place_id", $place->id)->get();
+        $comment = $comment->where("place_id", $place->id);
+        
+        $comment_list = $comment->paginate(10);
         // $comment = $comment -> get();
-        return view("showComment")->with(["comments" => $comment,"place" => $place]);
+        return view("showComment")->with(["comments" => $comment_list,"place" => $place]);
     }
     
     public function store(CommentRequest $request, Comment $comment, Place $place)

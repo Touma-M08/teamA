@@ -35,9 +35,9 @@ class PlaceController extends Controller
             }
             $places = $query;
         }
-        
+        $place_list = $places->orderBy("created_at", "desc")->paginate(10);
         return view("search")->with([
-            "places" => $places->get(),
+            "places" => $place_list,
             "categories" => $category->get()
         ]);
     }
