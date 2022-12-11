@@ -20,12 +20,6 @@
         <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
             <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
               <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-              </li>
-              <li>
-                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-              </li>
-              <li>
                 <a href="{{route('shopCreate')}}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">お店を登録する</a>
               </li>
               <li>
@@ -41,7 +35,7 @@
         </div>
       @else
         <a href="login" class="hidden lg:inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
-          Log in
+         ログイン
         </a>
       @endif
     </header>
@@ -63,8 +57,11 @@
         
      </from>
       <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6 mt-5">検索結果</h2>
-
+     @if(!$places->isEmpty())
       <p class="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto"></p>
+      @else
+      <h1>検索結果が見つかりませんでした</h1>
+      @endif
     </div>
     <!-- text - end -->
 
