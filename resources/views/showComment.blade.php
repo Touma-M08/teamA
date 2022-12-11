@@ -2,11 +2,12 @@
 <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
 <x-app-layout>
     <div class = "flex">
-        <div class="bg-white py-6 sm:py-8 lg:py-12 w-1/2 border-r-2 border-black">
+        <div class="bg-white py-6 sm:py-8 lg:py-12 w-1/2">
           <div class="max-w-screen-md px-4 md:px-8 mx-auto p-3">
-            <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8 xl:mb-12">掲示板</h2>
+            <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8 xl:mb-12">{{$place->name}}の掲示板</h2>
             <div class="divide-y">
-                @foreach($comments as $comment)
+                @if(!$comments->isEmpty())
+                 @foreach($comments as $comment)
                   <!-- review - start -->
                   <div class="flex flex-col gap-3 py-4 md:py-8">
                     <div>
@@ -17,12 +18,15 @@
                     <p class="text-gray-600">{{$comment->comment}}</p>
                   </div>
                   <!-- review - end -->
-                  @endforeach
+                  @endforeach                
+                @else
+                <h2>まだコメントはありません</h2>
+                @endif
             </div>
           </div>
         </div>
         
-       <div class="fixed right-0 bg-white py-6 sm:py-8 lg:py-12 w-1/2">
+       <div class="fixed right-0 bg-white py-6 sm:py-8 lg:py-12 w-1/2 h-full border-l-2 border-black">
         <header class = "flex justify-end items-center py-4 md:py-8 mb-4">
           @if( auth() -> user() )
             <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">{{auth()->user()->name}}<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
@@ -46,6 +50,7 @@
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
+                    </form>
                   </li>
                 </ul>
             </div>
@@ -65,7 +70,7 @@
             <!-- text - end -->
         
             <!-- form - start -->
-            <form method = "POST" action="/bbs/{{$place_id}}" class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto">
+            <form method = "POST" action="/bbs/{{$place->id}}" class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto">
               @csrf
               <div class="sm:col-span-2">
                 <label for="boardComment" class="inline-block text-gray-800 text-sm sm:text-base mb-2">コメント</label>
