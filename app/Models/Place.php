@@ -20,4 +20,9 @@ class Place extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }
