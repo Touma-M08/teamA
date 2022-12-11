@@ -14,7 +14,7 @@ class CommentController extends Controller
     {
         $comment = $comment->where("place_id", $place->id);
         
-        $comment_list = $comment->paginate(1);
+        $comment_list = $comment->paginate(10);
         // $comment = $comment -> get();
         return view("showComment")->with(["comments" => $comment_list,"place" => $place]);
     }
