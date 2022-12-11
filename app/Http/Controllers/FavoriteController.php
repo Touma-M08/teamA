@@ -11,7 +11,7 @@ class FavoriteController extends Controller
 {
     public function index(Favorite $favorite)
     {
-        return view("")->with(["favorits" => $favorite->where("user_id", Auth::user()->id)->get()]);
+        return view("favorite")->with(["favorites" => $favorite->where("user_id", Auth::user()->id)->get()]);
     }
     
     public function store(Place $place, Favorite $favorite)

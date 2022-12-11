@@ -23,6 +23,7 @@
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
+                    </form>
                   </li>
                 </ul>
             </div>
@@ -53,6 +54,20 @@
               </div>
               <div class="justify-end">
                 <a href= '/bbs/{{$place->id}}' class="text-white bg-indigo-500 border-l-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg w-fit ablolute right 0 buttom 0">掲示板へ</a>
+              </div>
+              <div class="justify-end">
+                <form method="POST" action="/places/{{$place->id}}">
+                  @csrf
+                  @auth
+                    @if(!$favorite->where("user_id", Auth::user()->id)->where("place_id", $place->id)->first())
+                      <input value="お気に入り登録" type="submit" class="text-white bg-indigo-500 border-l-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg w-fit ablolute right 0 buttom 0 mt-5"></input>
+                    @else
+                      <input value="登録済み" type="button" class="text-white bg-indigo-500 border-l-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg w-fit ablolute right 0 buttom 0 mt-5"></input>
+                    @endif
+                  @else
+                    <input value="お気に入り登録" type="submit" disabled class="text-white bg-indigo-500 border-l-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg w-fit ablolute right 0 buttom 0 mt-5"></input>
+                  @endauth
+                </form>
               </div>
             </div>
           </div>

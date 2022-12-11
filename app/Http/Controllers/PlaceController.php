@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
+use App\Models\Favorite;
 use Auth;
 use App\Http\Requests\PlaceRequest;
 
@@ -62,10 +63,12 @@ class PlaceController extends Controller
     }
     
     //お店詳細ページ
-    public function show(Place $place)
+    public function show(Place $place, Favorite $favorite)
     {
-        //dd($place->lat);
-        return view("shopDetail")->with(["place" => $place]);
+        return view("shopDetail")->with([
+            "place" => $place,
+            "favorite" => $favorite
+        ]);
     }
     
     
