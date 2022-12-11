@@ -12,7 +12,12 @@ use Auth;
 class PlaceController extends Controller
 {
     //トップページ
-    public function index(Request $request, Place $place)
+    public function index(){
+        
+        return view("top")->with(["user" => Auth::user()]);
+    }
+    
+    public function search(Request $request, Place $place)
     {
         $places = $place;
         $query = $place->query();
@@ -26,7 +31,7 @@ class PlaceController extends Controller
             $places = $query;
         }
         
-        return view("top")->with(["places" => $places->get()]);
+        return view("search")->with(["places" => $places->get()]);
     }
     
     //お店情報登録

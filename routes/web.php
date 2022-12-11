@@ -17,6 +17,7 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::get('/', [PlaceController::class, "index"])->name("top"); //トップページ
+Route::get('/search',[PlaceController::class,"search"])->name("search");
 Route::get('/places/create', [PlaceController::class, "create"])->name("shopCreate"); //お店登録
 Route::get('/places/{place}', [PlaceController::class, "show"])->name("shopDetail"); //お店詳細
 Route::post('/places', [PlaceController::class, "store"])->name("shopStore"); //お店保存処理
