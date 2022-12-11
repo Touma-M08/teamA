@@ -20,4 +20,9 @@ class Review extends Model
     {
         return $this->belongsTo(Place::class);
     }
+    
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

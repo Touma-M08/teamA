@@ -7,8 +7,10 @@ use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
 use App\Models\Favorite;
+use App\Models\Image;
 use Auth;
 use App\Http\Requests\PlaceRequest;
+use Cloudinary;
 
 
 class PlaceController extends Controller
@@ -53,6 +55,7 @@ class PlaceController extends Controller
     {
         $input = $request["place"];
         $data = $place->where("name", $input["name"])->first();
+        
         if (!$data) {
             $place->fill($input)->save();
             $review->place_id = $place->id;
@@ -62,6 +65,20 @@ class PlaceController extends Controller
         $review->review = $request->review;
         $review->user_id = Auth::user()->id;
         $review->save();
+        
+        
+        if ($request->file('image')) {
+            foreach ($request->file('image') as $img) {
+                $image = new Image;
+                $image->review_id = $review->id;
+                
+                $path = Cloudinary::upload($img->getRealPath())->getSecurePath();
+                $image->image = $path;
+                $image->save();
+            }
+        }
+        
+        
         
         $data = $place->where("name", $input["name"])->first();
         

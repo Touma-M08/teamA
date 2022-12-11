@@ -83,9 +83,16 @@
               <div>
                   {{$review->user->name}}さん：
               </div>
-           <h2 class="text-gray-800 text-xl font-bold">
+            <h2 class="text-gray-800 text-xl font-bold">
              <div class="hover:text-indigo-500 active:text-indigo-600 transition duration-100">{{$review->review}}</div>
-           </h2>
+            </h2>
+            <h2 class="text-gray-800 text-xl font-bold">
+              @if($review->images)
+                @foreach($review->images as $image)
+                  <img src="{{$image->image}}"></img>
+                @endforeach
+              @endif
+            </h2>
           </div>
           </div>
          </div>
