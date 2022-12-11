@@ -51,7 +51,6 @@ class PlaceController extends Controller
         }else {
             $review->place_id = $data->id;
         }
-        
         $review->review = $request->review;
         $review->user_id = Auth::user()->id;
         $review->save();
