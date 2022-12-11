@@ -13,7 +13,7 @@
                     <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                <a href="{{route('shopCreate')}}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">お店を登録する</a>
                   </li>
                   <li>
                     <form method="POST" action="{{ route('logout') }}">
@@ -32,16 +32,16 @@
             </a>
           @endif
         </div>
-        <section class="text-gray-600 body-font relative">
+        <section class="text-gray-600 body-font relative flex item-stretch">
           <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-            <div class="lg:w-1/2 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 flex items-end justify-start relative">
-              <img id="photo" class="w-full h-full object-contain" src="">
+             <div class="flex flex-col w-1/2">
+                <div class="bg-gray-300 rounded-lg overflow-hidden  flex items-end justify-start relative">
+                  <img id="photo" class="w-full h-full object-contain" src="">
+                </div>
+                  <div id="map" class=" bg-gray-300 rounded-lg overflow-hidden sm:mr-10 flex items-end justify-start relative w-full h-full"></div>
             </div>
-            <div class="lg:w-1/2 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 flex items-end justify-start relative">
-              <div id="map" class="w-full h-full"></div>
-            </div>
-            <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-              <h1 class="text-gray-900 text-lg mb-1 font-medium title-font">{{$place->name}}</h1>
+            <div class="w-1/2 bg-white flex flex-col md:ml-auto border-2 border-black">
+              <h1 class="text-gray-900 text-lg mb-1 font-medium title-font flex-center">{{$place->name}}</h1>
               <h3 class="leading-relaxed mb-5 text-gray-600">{{$place->address}}</h3>
               <div class="relative mb-4">
                 <label for="tel" class="leading-7 text-sm text-gray-600">電話番号</label>
@@ -51,17 +51,28 @@
                 <label for="message" class="leading-7 text-sm text-gray-600">お店の詳細</label>
                 <h3 name="message">{{$place->detail}}</h3>
               </div>
-              <a href= '/bbs/{{$place->id}}' class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">掲示板へ</a>
+              <div class="justify-end">
+                <a href= '/bbs/{{$place->id}}' class="text-white bg-indigo-500 border-l-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg w-fit ablolute right 0 buttom 0">掲示板へ</a>
+              </div>
             </div>
           </div>
         </section>
         <div>
-            @foreach($place->reviews as $review)
-            {{ $review->review }} 
-            @endforeach
-            
-        </div>
-
+            <h2>このお店のレビュー</h2>
+        @foreach($place->reviews as $review)
+         <div class="flex flex-col md:flex-row items-center border rounded-lg overflow-hidden">
+          <div class="flex flex-col gap-2 p-4 lg:p-6">
+              <div>
+                  {{$review->user->name}}さん：
+              </div>
+           <h2 class="text-gray-800 text-xl font-bold">
+             <div class="hover:text-indigo-500 active:text-indigo-600 transition duration-100">{{$review->review}}</div>
+           </h2>
+          </div>
+          </div>
+         </div>
+       @endforeach
+     </div>
     </div>
     
     <script>
@@ -71,4 +82,6 @@
     </script>
     <script src="{{asset('js/showApi.js')}}" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?lang=ja&key={{ config('app.api_key') }}&libraries=places&callback=initMap" defer></script>
+    <script src="../path/to/flowbite/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
 </x-app-layout>

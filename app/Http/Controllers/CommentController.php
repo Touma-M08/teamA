@@ -14,7 +14,7 @@ class CommentController extends Controller
     {
         $comment = $comment->where("place_id", $place->id)->get();
         // $comment = $comment -> get();
-        return view("showComment")->with(["comments" => $comment,"place_id" => $place->id]);
+        return view("showComment")->with(["comments" => $comment,"place" => $place]);
     }
     
     public function store(CommentRequest $request, Comment $comment, Place $place)
