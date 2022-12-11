@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Place;
 use Auth;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
@@ -16,7 +17,7 @@ class CommentController extends Controller
         return view("showComment")->with(["comments" => $comment,"place" => $place]);
     }
     
-    public function store(Request $request, Comment $comment, Place $place)
+    public function store(CommentRequest $request, Comment $comment, Place $place)
     {
         $comment->user_id = Auth::user()->id;
         $comment->place_id = $place->id;
