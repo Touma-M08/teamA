@@ -40,7 +40,7 @@
           <!-- buttons - end -->
         </header>
     
-        <section class="h-0 flex justify-center items-center flex-1 shrink-0 bg-gray-100 overflow-hidden shadow-lg rounded-lg relative py-16 md:py-20 xl:py-48">
+        <section class="h-fit flex justify-center items-center flex-1 shrink-0 bg-gray-100 overflow-hidden shadow-lg rounded-lg relative py-16 md:py-20 xl:py-48">
           <!-- image - start -->
 
           <!-- image - end -->
