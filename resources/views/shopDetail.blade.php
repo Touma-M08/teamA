@@ -86,10 +86,10 @@
             <h2 class="text-gray-800 text-xl font-bold">
              <div class="hover:text-indigo-500 active:text-indigo-600 transition duration-100">{{$review->review}}</div>
             </h2>
-            <h2 class="text-gray-800 text-xl font-bold">
+            <h2 class="text-gray-800 text-xl font-bold flex">
               @if($review->images)
                 @foreach($review->images as $image)
-                  <img src="{{$image->image}}"></img>
+                  <img src="{{$image->image}}" class="w-1/4 w-1/4 border-2"></img>
                 @endforeach
               @endif
             </h2>
