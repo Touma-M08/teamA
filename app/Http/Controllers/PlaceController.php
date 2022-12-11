@@ -14,9 +14,9 @@ use App\Http\Requests\PlaceRequest;
 class PlaceController extends Controller
 {
     //トップページ
-    public function index(){
+    public function index(Category $category){
         
-        return view("top")->with(["user" => Auth::user()]);
+        return view("top")->with(["user" => Auth::user(), "categories" => $category->get()]);
     }
     
     public function search(Request $request, Place $place, Category $category)
